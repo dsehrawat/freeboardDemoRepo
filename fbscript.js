@@ -1,21 +1,15 @@
+var window.respimatic_uid = "";
+/*$.support.cors = true;*/
 
-window.currentThing = "";
+while (1) {
+  respimatic_uid = 
+    window.prompt("Please enter RESPIMATIC 100 SysUID to connect to", "");
 
-setTimeout(function(){
-
-	$('select#thingSelect').on('change', function (e) {
-			var optionSelected = $("option:selected", this);
-    		var valueSelected = this.value;
-        window.currentThing = valueSelected;
-   			changeThing(valueSelected);
-	});
-
-},3000);
-
-function changeThing(thingVal) {
-	freeboard.showLoadingIndicator(true);
-	setTimeout(function(){
-		freeboard.setDatasourceSettings("myTestThing-1", {"thingname":""+thingVal+""});
-		freeboard.showLoadingIndicator(false);
-	},1200);
+  if (respimatic_uid == null || respimatic_uid == "") {
+    window.alert("Invalid SysUID - Please try again!");
+  } else {
+    freeboard.setDatasourceSettings("RESPIMATIC100", 
+      {"thing_id":window.respimatic_uid});
+    break;
+  }
 }
