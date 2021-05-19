@@ -1,5 +1,5 @@
 var window.respimatic_uid = "";
-/*$.support.cors = true;*/
+$.support.cors = true;
 
 while (1) {
   respimatic_uid = 
